@@ -21,6 +21,9 @@ alias hideInvisibles="defaults write com.apple.finder AppleShowAllFiles NO"
 # softwareupdate
 alias softwareUpdate="sudo softwareupdate -ir --restart"
 
+# remove catalina bash warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # HOME
 
 # check the weather
