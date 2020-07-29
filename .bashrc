@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # BASH STUFF
-export PS1="\h \u \w $ "
+export PS1="\[\e[35m\]\h \[\e[36m\]\u \[\e[37m\]\w $ "
 
 # macOS STUFF
 
