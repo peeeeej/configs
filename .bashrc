@@ -24,10 +24,17 @@ alias softwareUpdate="sudo softwareupdate -ir --restart"
 # remove catalina bash warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# HOME
+# ALIASES THO
 
 # check the weather
 alias weather="curl wttr.in/Denver"
+
+# FUNCTIONS THO
+
+# get the length of a string
+lenstr () {
+    echo -n $1 | wc -c
+}
 
 # WORK WORK
 
@@ -36,3 +43,10 @@ alias gam='/Users/phurley/bin/gamadv-xtd3/gam'
 
 # update gam
 # alias gamUpdate='bash <(curl -s -S -L https://git.io/install-gam) -l'
+
+# FUNCTIONS THO
+
+# get the length of a string
+lenstr () {
+    echo -n $1 | wc -c
+}
