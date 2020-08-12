@@ -31,10 +31,16 @@ alias hideInvisibles="defaults write com.apple.finder AppleShowAllFiles NO"
 # softwareupdate
 alias softwareUpdate="sudo softwareupdate -ir --restart"
 
-# HOME
+# ALIASES THO
 
 # check the weather
 alias weather="curl wttr.in/Denver"
+
+# FUNCTIONS THO
+
+function lenstr {
+    echo -n $1 | wc -c
+}
 
 # WORK WORK
 
@@ -43,9 +49,3 @@ alias gam='/Users/phurley/bin/gamadv-xtd3/gam'
 
 # update gam
 # alias gamUpdate='bash <(curl -s -S -L https://git.io/install-gam) -l'
-
-# FUNCTIONS THO
-
-function lenstr {
-    echo -n $1 | wc -c
-}

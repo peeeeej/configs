@@ -43,10 +43,3 @@ alias gam='/Users/phurley/bin/gamadv-xtd3/gam'
 
 # update gam
 # alias gamUpdate='bash <(curl -s -S -L https://git.io/install-gam) -l'
-
-# FUNCTIONS THO
-
-# get the length of a string
-lenstr () {
-    echo -n $1 | wc -c
-}
