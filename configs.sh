@@ -1,7 +1,14 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-declare -a ConfigsArray=('.zshrc' '.bashrc' '.vimrc' '.bash_profile')
+currentdir=$(pwd)
 
-for val in ${ConfigsArray[@]}; do
-    ln -s ~/git/configs/$val ~/$val
+declare -a configs=('.zshrc' '.bashrc' '.vimrc' '.bash_profile')
+
+for val in ${configs[@]}; do
+    if [ -f ~/$val ]; then
+        rm ~/$val && ln -s $currentdir/$val ~/$val
+    else
+        ln -s $currentdir/$val ~/$val
+    fi
+
 done
