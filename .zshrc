@@ -22,7 +22,7 @@ alias music="open -a Music"
 alias backup="rsync -uva ~/Music /Volumes/wonderheart\ music\ backup/"
 
 # update home brew
-alias brewUpdate="brew update && brew upgrade && brew cask upgrade && brew cleanup && brew doctor"
+alias brewUpdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup && brew doctor"
 
 # Show/Hide Invisible files
 alias showInvisibles="defaults write com.apple.finder AppleShowAllFiles YES"
