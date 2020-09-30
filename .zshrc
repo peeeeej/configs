@@ -41,11 +41,3 @@ alias weather="curl wttr.in/Denver"
 function lenstr {
     echo -n $1 | wc -c
 }
-
-# WORK WORK
-
-# points to gam for google administration
-alias gam='/Users/phurley/bin/gamadv-xtd3/gam'
-
-# update gam
-# alias gamUpdate='bash <(curl -s -S -L https://git.io/install-gam) -l'
