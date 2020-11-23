@@ -38,6 +38,12 @@ alias weather="curl wttr.in/80033"
 
 # FUNCTIONS THO
 
+# get the length of a string
 function lenstr {
     echo -n $1 | wc -c
+}
+
+# use rosetta 2 to brew install something
+function ibrew {
+    arch -x86_64 brew install $1
 }

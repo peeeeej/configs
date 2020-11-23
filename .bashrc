@@ -36,13 +36,7 @@ lenstr () {
     echo -n $1 | wc -c
 }
 
-# WORK WORK
-
-# points to gam for google administration
-alias gam='/Users/phurley/bin/gamadv-xtd3/gam'
-
-# update gam
-# alias gamUpdate='bash <(curl -s -S -L https://git.io/install-gam) -l'
-
-# declaring P4CONFIG variable
-export P4CONFIG=.p4config
+# use rosetta 2 to brew install something
+ibrew () {
+    arch -x86_64 brew install $1
+}
