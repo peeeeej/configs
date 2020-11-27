@@ -9,7 +9,7 @@ export PS1="\[\e[35m\]\h \[\e[36m\]\u \[\e[37m\]\w $ "
 alias music="open -a Music"
 
 # backup the ~/Music Directory since it's the only personal stuff on board
-alias backup="rsync -uva ~/Music /Volumes/wonderheart\ music\ backup/"
+alias backup="rsync -uva ~/Music ~/Library/Mobile Documents/com~apple~CloudDocs/"
 
 # update home brew
 alias brewUpdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup && brew doctor"
