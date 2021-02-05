@@ -32,8 +32,3 @@ alias weather="curl wttr.in/80033"
 lenstr () {
     echo -n $1 | wc -c
 }
-
-# use rosetta 2 to brew install something
-ibrew () {
-    arch -x86_64 brew install $1
-}
