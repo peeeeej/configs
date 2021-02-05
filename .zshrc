@@ -4,8 +4,8 @@
 
 # dedicated history file
 HISTFILE=~/.zsh_history
-HISTSIZE=3000
-SAVEHIST=3000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt EXTENDED_HISTORY # extra history info
 setopt INC_APPEND_HISTORY # adds commands to the HISTFILE as they're typed
 setopt appendhistory # history accessible between sessions
