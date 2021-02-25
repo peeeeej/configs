@@ -39,3 +39,13 @@ alias weather="curl wttr.in/80033"
 function lenstr {
     echo -n $1 | wc -c
 }
+
+# open a file in atom from the command line
+function atom {
+    open -a Atom $1
+}
+
+# open a file in vs code from the command line
+function vscode {
+    open -a Visual\ Studio\ Code $1
+}
