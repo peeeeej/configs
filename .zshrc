@@ -1,6 +1,15 @@
 #!/bin/zsh
 
 # ZSH STUFF
+# Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats '(%b)'
+
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
 
 # dedicated history file
 HISTFILE=~/.zsh_history
@@ -11,7 +20,7 @@ setopt INC_APPEND_HISTORY # adds commands to the HISTFILE as they're typed
 setopt appendhistory # history accessible between sessions
 
 # prompt shows hostname, user name, directory
-PS1='%F{yellow}%m%f %F{green}%n%f %~ %# ' # hostname is yellow, user name is green
+PS1='%F{yellow}%m%f %F{green}%n%f %~${vcs_info_msg_0_} %# ' # hostname is yellow, user name is green
 
 # macOS STUFF
 
@@ -48,16 +57,4 @@ function atom {
 # open a file in vs code from the command line
 function vscode {
     open -a Visual\ Studio\ Code $1
-}
-
-# get git branch name for command prompt use
-function git_branch_name()
-{
-  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-  if [[ $branch == "" ]];
-  then
-    :
-  else
-    echo '- ('$branch')'
-  fi
 }
