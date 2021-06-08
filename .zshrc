@@ -49,3 +49,15 @@ function atom {
 function vscode {
     open -a Visual\ Studio\ Code $1
 }
+
+# get git branch name for command prompt use
+function git_branch_name()
+{
+  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+  if [[ $branch == "" ]];
+  then
+    :
+  else
+    echo '- ('$branch')'
+  fi
+}
