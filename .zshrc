@@ -19,7 +19,7 @@ setopt EXTENDED_HISTORY # extra history info
 setopt INC_APPEND_HISTORY # adds commands to the HISTFILE as they're typed
 setopt appendhistory # history accessible between sessions
 
-# prompt shows hostname, user name, directory
+# prompt shows hostname, user name, directory, git branch if a git repo
 PS1='%F{yellow}%m%f %F{green}%n%f %~${vcs_info_msg_0_} %# ' # hostname is yellow, user name is green
 
 # macOS STUFF
