@@ -17,7 +17,7 @@ defaults write com.apple.dock show-recents -bool false
 
 ### FINDER ###
 
-# Show icons for external hard drives and removable media on the desktop
+# show icons for external hard drives and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
@@ -56,16 +56,13 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 
 ### MISC SYSTEM ###
 
-# disable system-wide resume
-defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
-
 # enable the automatic update check
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
 # check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-# disable safe sleep/hibernation
+# disable hibernation
 sudo pmset -a hibernatemode 0
 
 # kill affected applications
