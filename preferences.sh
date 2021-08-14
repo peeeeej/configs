@@ -9,7 +9,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ### DOCK ###
 
-# automatically hide and show the dock
+# automatically hide and show the dock CURRENTLY NOT WORKING
 defaults write com.apple.dock showhidden -bool true
 
 # don't show recent applications in dock
@@ -23,7 +23,7 @@ defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-### TRACKPAD ###
+### TRACKPAD ### CURRENTLY NOT WORKING
 
 # enable tap to click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -45,7 +45,13 @@ defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/C
 # set clock date/time format
 defaults write com.apple.menuextra.clock DateFormat "EEE MMM d  h:mm:ss a"
 
+# reveal ip address, hostname, OS version, etc. when clicking the clock in the login window"
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
 ### MISC SYSTEM ###
+
+# disable system-wide resume
+defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
 # enable the automatic update check
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
