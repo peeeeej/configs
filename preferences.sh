@@ -9,8 +9,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ### DOCK ###
 
-# automatically hide and show the dock CURRENTLY NOT WORKING
-defaults write com.apple.dock showhidden -bool true
+# automatically hide and show the dock
+defaults -currentHost write com.apple.dock autohide -bool true
 
 # don't show recent applications in dock
 defaults write com.apple.dock show-recents -bool false
@@ -23,16 +23,19 @@ defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-### TRACKPAD ### CURRENTLY NOT WORKING
+### TRACKPAD ###
 
 # enable tap to click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
 # enforce two-finger right click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
 
 # enable three finger dragging
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
+# enfore natural scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
 ### MENUBAR ###
 
