@@ -28,6 +28,9 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 # enable tap to click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
+# enforce two-finger right click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+
 # enable three finger dragging
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
 
@@ -63,4 +66,4 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 sudo pmset -a hibernatemode 0
 
 # kill affected applications
-# osascript -e 'tell application "loginwindow" to  «event aevtrlgo»'
+osascript -e 'tell application "loginwindow" to  «event aevtrlgo»'
