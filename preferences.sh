@@ -14,7 +14,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 defaults -currentHost write com.apple.dock autohide -bool true
 
 # don't show recent applications in dock
-defaults write com.apple.dock show-recents -bool false
+defaults -currentHost write com.apple.dock show-recents -bool false
 
 ##############
 ### FINDER ###
