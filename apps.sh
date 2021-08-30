@@ -7,7 +7,6 @@ cd ~/Downloads/
 pwd
 
 # google chrome
-
 curl -O -J -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
 
 # visual studio code
@@ -18,3 +17,6 @@ curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
 
 # slack
 curl -L https://slack.com/ssb/download-osx --output Slack.dmg
+
+# zoom
+curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
