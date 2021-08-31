@@ -6,7 +6,9 @@ cd ~/Downloads/
 # troubleshooting
 pwd
 
+############
 ### CURL ###
+############
 
 # google chrome
 curl -O -J -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
@@ -29,7 +31,9 @@ curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
 # rectangle
 curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.48/Rectangle0.48.dmg
 
+##################
 ### .ZIP FILES ###
+##################
 
 declare -a zips=('VSCode-darwin.zip' 'atom-mac.zip' 'iTerm2.zip')
 
@@ -48,4 +52,32 @@ done
 # remove zip files from ~/Downloads
 for val in "${zips[@]}"; do
     rm "$val"
+done
+
+##################
+### .DMG FILES ###
+##################
+
+declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.48.dmg')
+
+declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.48')
+
+# mount .dmg files
+for val in ${dmgs[@]}; do
+    hdiutil attach $val
+done
+
+# copy apps to applications folder
+cp -R /Volumes/Google\ Chrome/Google\ Chrome.app /Applications
+cp -R /Volumes/Slack/Slack.app /Applications
+cp -R /Volumes/Rectangle0.48/Rectangle.app /Applications
+
+# eject .dmg files
+for val in "${volumes[@]}"; do
+    hdiutil detach /Volumes/"$val"
+done
+
+# remove .dmg files
+for val in ${dmgs[@]}; do
+    rm $val
 done
