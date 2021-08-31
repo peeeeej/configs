@@ -6,11 +6,16 @@ cd ~/Downloads/
 # troubleshooting
 pwd
 
+### CURL ###
+
 # google chrome
 curl -O -J -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
 
 # visual studio code
 curl -O -J -L  https://go.microsoft.com/fwlink/?linkid=620882
+
+# atom
+curl -L https://atom.io/download/mac --output atom-mac.zip
 
 # iterm2
 curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
@@ -23,3 +28,24 @@ curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
 
 # rectangle
 curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.48/Rectangle0.48.dmg
+
+### .ZIP FILES ###
+
+declare -a zips=('VSCode-darwin.zip' 'atom-mac.zip' 'iTerm2.zip')
+
+declare -a zip_apps=('Visual Studio Code.app' 'Atom.app' 'iTerm.app')
+
+# unzip .zip files
+for val in ${zips[@]}; do
+    unzip $val
+done
+
+# move apps to applications folder
+for val in "${zip_apps[@]}"; do
+    mv "$val" /Applications
+done
+
+# remove zip files from ~/Downloads
+for val in "${zips[@]}"; do
+    rm "$val"
+done
