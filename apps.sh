@@ -1,10 +1,13 @@
 #!/bin/bash
 
+# ask for the administrator password upfront
+sudo -v
+
+# keep-alive: update existing `sudo` time stamp until we have finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # make this mess in the downloads directory
 cd ~/Downloads/
-
-# troubleshooting
-pwd
 
 ############
 ### CURL ###
@@ -25,7 +28,7 @@ curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
 # slack
 curl -L https://slack.com/ssb/download-osx --output Slack.dmg
 
-# zoom
+zoom
 curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
 
 # rectangle
@@ -81,3 +84,9 @@ done
 for val in ${dmgs[@]}; do
     rm $val
 done
+
+##################
+### .PKG FILES ###
+##################
+
+sudo installer -pkg ZoomInstaller.pkg -target /
