@@ -89,6 +89,8 @@ done
 ### .PKG FILES ###
 ##################
 
+# install zoom
 sudo installer -pkg ZoomInstaller.pkg -target /
 
+# remove zoom
 rm ZoomInstaller.pkg
