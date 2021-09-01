@@ -90,3 +90,5 @@ done
 ##################
 
 sudo installer -pkg ZoomInstaller.pkg -target /
+
+rm ZoomInstaller.pkg
