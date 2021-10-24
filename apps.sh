@@ -13,34 +13,43 @@ cd ~/Downloads/
 ### CURL ###
 ############
 
-# google chrome
-curl -O -J -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+# # google chrome intel
+# curl -O -J -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+
+# google chrome apple silicon
+curl -O -J -L https://dl.google.com/chrome/mac/universal/stable/CHFA/googlechrome.dmg
 
 # visual studio code
 curl -O -J -L  https://go.microsoft.com/fwlink/?linkid=620882
 
-# atom
-curl -L https://atom.io/download/mac --output atom-mac.zip
-
 # iterm2
 curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
 
-# slack
-curl -L https://slack.com/ssb/download-osx --output Slack.dmg
+# # slack intel
+# curl -L https://slack.com/ssb/download-osx --output Slack.dmg
 
-# zoom
-curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
+# slack apple silicon
+curl -L https://slack.com/ssb/download-osx-silicon --output Slack.dmg
+
+# # zoom intel
+# curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
+
+# zoom apple silicon
+curl -L https://zoom.us/client/latest/Zoom.pkg?archType=arm64 --output ZoomInstaller.pkg
 
 # rectangle
-curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.48/Rectangle0.48.dmg
+curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.49/Rectangle0.49.dmg
+
+# 1password
+ curl -L  https://app-updates.agilebits.com/download/OPM7 --output 1Password.pkg
 
 ##################
 ### .ZIP FILES ###
 ##################
 
-declare -a zips=('VSCode-darwin.zip' 'atom-mac.zip' 'iTerm2.zip')
+declare -a zips=('VSCode-darwin.zip' 'iTerm2.zip')
 
-declare -a zip_apps=('Visual Studio Code.app' 'Atom.app' 'iTerm.app')
+declare -a zip_apps=('Visual Studio Code.app' 'iTerm.app')
 
 # unzip .zip files
 for val in ${zips[@]}; do
@@ -61,9 +70,9 @@ done
 ### .DMG FILES ###
 ##################
 
-declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.48.dmg')
+declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.49.dmg')
 
-declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.48')
+declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.49')
 
 # mount .dmg files
 for val in ${dmgs[@]}; do
@@ -73,7 +82,7 @@ done
 # copy apps to applications folder
 cp -R /Volumes/Google\ Chrome/Google\ Chrome.app /Applications
 cp -R /Volumes/Slack/Slack.app /Applications
-cp -R /Volumes/Rectangle0.48/Rectangle.app /Applications
+cp -R /Volumes/Rectangle0.49/Rectangle.app /Applications
 
 # eject .dmg files
 for val in "${volumes[@]}"; do
@@ -89,8 +98,12 @@ done
 ### .PKG FILES ###
 ##################
 
-# install zoom
-sudo installer -pkg ZoomInstaller.pkg -target /
+declare -a pkgs=('1Password.pkg' 'ZoomInstaller.pkg')
 
-# remove zoom
-rm ZoomInstaller.pkg
+# install pkgs
+for val in "${pkgs[@]}"; do
+    sudo installer -pkg "$val" -target /
+done
+
+# remove zoom and 1Password
+rm ZoomInstaller.pkg 1Password.pkg
