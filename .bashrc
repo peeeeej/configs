@@ -33,11 +33,6 @@ lenstr () {
     echo -n $1 | wc -c
 }
 
-# open a file in atom from the command line
- atom () {
-    open -a Atom $1
-}
-
 # open a file in vs code from the command line
 vscode () {
     open -a Visual\ Studio\ Code $1
