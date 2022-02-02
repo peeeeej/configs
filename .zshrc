@@ -53,3 +53,7 @@ function lenstr {
 function vscode {
     open -a Visual\ Studio\ Code $1
 }
+
+function manpage {
+    man -t $1 | open -fa Preview
+}
