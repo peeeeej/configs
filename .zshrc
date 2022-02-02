@@ -54,6 +54,18 @@ function vscode {
     open -a Visual\ Studio\ Code $1
 }
 
+# open a man page in preview dot app
 function manpage {
     man -t $1 | open -fa Preview
+}
+
+# create an xkcd-style password, make sure to follow with a number so it knows how long to 
+# make the password
+function mkpass {
+    curl https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt 2>/dev/null \
+    | cut -f 2 \
+    | sort -R \
+    | head -n $1 \
+    | xargs echo \
+    | sed 's/ /-/g'
 }
