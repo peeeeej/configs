@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # BASH STUFF
-export PS1="\[\e[35m\]\h \[\e[36m\]\u \[\e[37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+export PS1="\[\e[35m\]\h \[\e[36m\]\u \[\e[37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] (╯’□’)╯︵ ┻━┻ "
 
 # macOS STUFF
 
