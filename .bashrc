@@ -58,3 +58,7 @@ mkpass () {
     | xargs echo \
     | sed 's/ /-/g'
 }
+
+myip () {
+  curl http://ipecho.net/plain ; echo
+}

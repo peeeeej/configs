@@ -69,3 +69,8 @@ function mkpass {
     | xargs echo \
     | sed 's/ /-/g'
 }
+
+# get the ip address the internet thinks you have
+function myip {
+  curl http://ipecho.net/plain ; echo
+}
