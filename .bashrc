@@ -59,6 +59,7 @@ mkpass () {
     | sed 's/ /-/g'
 }
 
+# get the ip address the internet thinks you have
 myip () {
   curl http://ipecho.net/plain ; echo
 }
