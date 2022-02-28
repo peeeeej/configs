@@ -72,5 +72,11 @@ function mkpass {
 
 # get the ip address the internet thinks you have
 function myip {
-  curl http://ipecho.net/plain ; echo
+    curl http://ipecho.net/plain ; echo
+}
+
+# list the subdirectories of a directory and then git pull on those paths, you must provide
+# the top level directory
+function gitPull {
+    ls $1 | xargs -I{} git -C $1/{} pull
 }
