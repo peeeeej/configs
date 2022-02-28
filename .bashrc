@@ -65,7 +65,8 @@ myip () {
 }
 
 # list the subdirectories of a directory and then git pull on those paths, you must provide
-# the top level directory
+# the top level directory, added some sed logic to remove any secondary forward slashes that might
+# come through
 gitPull () {
-    ls $1 | xargs -I{} git -C $1/{} pull
+    ls $1 | xargs -I{} echo $1/{} | sed 's/\/\//\//' | xargs -I{} git -C {} pull
 }
