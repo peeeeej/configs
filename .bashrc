@@ -63,3 +63,9 @@ mkpass () {
 myip () {
   curl http://ipecho.net/plain ; echo
 }
+
+# list the subdirectories of a directory and then git pull on those paths, you must provide
+# the top level directory
+gitPull () {
+    ls $1 | xargs -I{} git -C $1/{} pull
+}
