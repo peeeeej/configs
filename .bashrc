@@ -61,7 +61,7 @@ mkpass () {
 
 # get the ip address the internet thinks you have
 myip () {
-  curl http://ipecho.net/plain ; echo
+    curl http://ipecho.net/plain ; echo
 }
 
 # list the subdirectories of a directory and then git pull on those paths, you must provide
