@@ -38,7 +38,7 @@ curl -L https://slack.com/ssb/download-osx-silicon --output Slack.dmg
 curl -L https://zoom.us/client/latest/Zoom.pkg?archType=arm64 --output ZoomInstaller.pkg
 
 # rectangle
-curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.51/Rectangle0.51.dmg
+curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.53/Rectangle0.53.dmg
 
 # 1password
  curl -L  https://app-updates.agilebits.com/download/OPM7 --output 1Password.pkg
@@ -70,9 +70,9 @@ done
 ### .DMG FILES ###
 ##################
 
-declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.51.dmg')
+declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.53.dmg')
 
-declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.51')
+declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.53')
 
 # mount .dmg files
 for val in ${dmgs[@]}; do
@@ -82,7 +82,7 @@ done
 # copy apps to applications folder
 cp -R /Volumes/Google\ Chrome/Google\ Chrome.app /Applications
 cp -R /Volumes/Slack/Slack.app /Applications
-cp -R /Volumes/Rectangle0.51/Rectangle.app /Applications
+cp -R /Volumes/Rectangle0.53/Rectangle.app /Applications
 
 # eject .dmg files
 for val in "${volumes[@]}"; do
