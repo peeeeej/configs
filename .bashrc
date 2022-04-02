@@ -33,11 +33,6 @@ lenstr () {
     echo -n $1 | wc -c
 }
 
-# open a file in vs code from the command line
-vscode () {
-    open -a Visual\ Studio\ Code $1
-}
-
 # get git branch info for displaying on the terminal prompt
 parse_git_branch () {
  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
