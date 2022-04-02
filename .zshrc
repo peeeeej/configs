@@ -49,11 +49,6 @@ function lenstr {
     echo -n $1 | wc -c
 }
 
-# open a file in vs code from the command line
-function vscode {
-    open -a Visual\ Studio\ Code $1
-}
-
 # open a man page in preview dot app
 function manpage {
     man -t $1 | open -fa Preview
