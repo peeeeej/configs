@@ -39,7 +39,7 @@ curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
 curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.53/Rectangle0.53.dmg
 
 # 1password
- curl -L  https://app-updates.agilebits.com/download/OPM7 --output 1Password.pkg
+curl -L  https://app-updates.agilebits.com/download/OPM7 --output 1Password.pkg
 
 ##################
 ### .ZIP FILES ###
