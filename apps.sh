@@ -13,29 +13,27 @@ cd ~/Downloads/
 ### CURL ###
 ############
 
-# # google chrome intel
-# curl -O -J -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+if [[ $(arch) != 'arm64' ]]; then
+        # google chrome intel
+        curl -O -J -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+        # slack intel
+        curl -L https://slack.com/ssb/download-osx --output Slack.dmg
+        # zoom intel
+        curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
+    else
+        # google chrome apple silicon
+        curl -O -J -L https://dl.google.com/chrome/mac/universal/stable/CHFA/googlechrome.dmg
+        # slack apple silicon
+        curl -L https://slack.com/ssb/download-osx-silicon --output Slack.dmg
+        # zoom apple silicon
+        curl -L https://zoom.us/client/latest/Zoom.pkg?archType=arm64 --output ZoomInstaller.pkg
+    fi
 
-# google chrome apple silicon
-curl -O -J -L https://dl.google.com/chrome/mac/universal/stable/CHFA/googlechrome.dmg
-
-# visual studio code
-curl -O -J -L  https://go.microsoft.com/fwlink/?linkid=620882
+# visual studio code universal
+curl -O -J -L  https://go.microsoft.com/fwlink/?linkid=2156837
 
 # iterm2
 curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
-
-# # slack intel
-# curl -L https://slack.com/ssb/download-osx --output Slack.dmg
-
-# slack apple silicon
-curl -L https://slack.com/ssb/download-osx-silicon --output Slack.dmg
-
-# # zoom intel
-# curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
-
-# zoom apple silicon
-curl -L https://zoom.us/client/latest/Zoom.pkg?archType=arm64 --output ZoomInstaller.pkg
 
 # rectangle
 curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.53/Rectangle0.53.dmg
@@ -47,7 +45,7 @@ curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.53/Rectang
 ### .ZIP FILES ###
 ##################
 
-declare -a zips=('VSCode-darwin.zip' 'iTerm2.zip')
+declare -a zips=('VSCode-darwin-universal.zip' 'iTerm2.zip')
 
 declare -a zip_apps=('Visual Studio Code.app' 'iTerm.app')
 
