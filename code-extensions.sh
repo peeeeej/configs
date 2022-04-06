@@ -10,7 +10,8 @@ declare -a extensions=(
     'ms-python.vscode-pylance' \
     'ms-python.python' \
     'mechatroner.rainbow-csv' \
-    'formulahendry.terminal'
+    'formulahendry.terminal' \
+    'bmalehorn.shell-syntax'
     )
 
 for val in ${extensions[@]}; do
