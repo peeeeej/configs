@@ -76,3 +76,6 @@ function myip {
 function gitPull {
     ls $1 | xargs -I{} echo $1/{} | sed 's/\/\//\//' | xargs -I{} git -C {} pull
 }
+
+# ENV VARIABLES THO
+export GREP_OPTIONS='--color=always'
