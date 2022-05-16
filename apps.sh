@@ -36,7 +36,7 @@ curl -O -J -L  https://go.microsoft.com/fwlink/?linkid=2156837
 curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
 
 # rectangle
-curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.53/Rectangle0.53.dmg
+curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.56/Rectangle0.56.dmg
 
 # 1password
 curl -L  https://app-updates.agilebits.com/download/OPM7 --output 1Password.pkg
@@ -68,9 +68,9 @@ done
 ### .DMG FILES ###
 ##################
 
-declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.53.dmg')
+declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.56.dmg')
 
-declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.53')
+declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.56')
 
 # mount .dmg files
 for val in ${dmgs[@]}; do
@@ -80,7 +80,7 @@ done
 # copy apps to applications folder
 cp -R /Volumes/Google\ Chrome/Google\ Chrome.app /Applications
 cp -R /Volumes/Slack/Slack.app /Applications
-cp -R /Volumes/Rectangle0.53/Rectangle.app /Applications
+cp -R /Volumes/Rectangle0.56/Rectangle.app /Applications
 
 # eject .dmg files
 for val in "${volumes[@]}"; do
