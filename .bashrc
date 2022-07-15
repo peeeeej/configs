@@ -12,8 +12,8 @@ alias music="open -a Music"
 alias brewUpdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup && brew doctor"
 
 # Show/Hide Invisible files
-alias showInvisibles="defaults write com.apple.finder AppleShowAllFiles YES"
-alias hideInvisibles="defaults write com.apple.finder AppleShowAllFiles NO"
+alias showInvisibles="defaults write com.apple.finder AppleShowAllFiles YES && killall Finder"
+alias hideInvisibles="defaults write com.apple.finder AppleShowAllFiles NO && killall Finder"
 
 # softwareupdate
 alias softwareUpdate="sudo softwareupdate -ir --restart"
