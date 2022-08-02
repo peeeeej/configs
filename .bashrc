@@ -66,5 +66,10 @@ gitPull () {
     ls $1 | xargs -I{} echo $1/{} | sed 's/\/\//\//' | xargs -I{} git -C {} pull
 }
 
+# show the oneline/decorated version of a git log. make sure to 
+# include a number so that it knows how many lines to display.
+gitLog () {
+    git log --oneline --decorate -$1
+}
 # ENV VARIABLES THO
 export GREP_OPTIONS='--color=auto'

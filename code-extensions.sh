@@ -10,7 +10,6 @@ declare -a extensions=(
     'ms-python.vscode-pylance' \
     'ms-python.python' \
     'mechatroner.rainbow-csv' \
-    'formulahendry.terminal' \
     'bmalehorn.shell-syntax'
     )
 
