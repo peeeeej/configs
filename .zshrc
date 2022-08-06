@@ -5,6 +5,9 @@
 autoload -Uz vcs_info
 precmd() { vcs_info }
 
+# git auto complete
+autoload -Uz compinit && compinit
+
 # Format the vcs_info_msg_0_ variable
 zstyle ':vcs_info:git:*' formats ' (%b)'
 
