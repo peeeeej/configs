@@ -46,11 +46,11 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 ### MENUBAR ###
 ###############
 
-# show volume in menu bar
-defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
+# show volume in menu bar always
+defaults -currentHost write com.apple.controlcenter Sound -int 18
 
 # show bluetooth in menu bar
-defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+defaults -currentHost write com.apple.controlecenter Bluetooth -int 2
 
 # show clock
 defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Clock.menu"
