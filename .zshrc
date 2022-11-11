@@ -86,5 +86,13 @@ function gitLog {
     git log --oneline --decorate -$1
 }
 
+function desktopCleanup {
+    today=$(date "+%Y-%m-%d")
+    me=$(whoami)
+    backup_dir="/Users/$me/Documents/desktop_backup_$today"
+
+    mkdir -p $backup_dir && mv ~/Desktop/* $backup_dir
+}
+
 # ENV VARIABLES THO
 export GREP_OPTIONS='--color=auto'
