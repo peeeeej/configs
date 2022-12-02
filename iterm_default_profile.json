@@ -264,8 +264,9 @@
     }
   },
   "Window Type" : 0,
+  "Blur Radius" : 15.123080119680852,
   "Background Image Location" : "",
-  "Blur" : false,
+  "Blur" : true,
   "Scrollback Lines" : 1000,
   "Send Code When Idle" : false,
   "Close Sessions On End" : true,
