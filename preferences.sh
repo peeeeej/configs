@@ -21,6 +21,8 @@ sudo su $LOGGED_USER -c 'defaults delete com.apple.dock persistent-apps'
 
 directory_test_app='/Applications/zoom.us.app'
 
+music_test_app='/Applications/Arturia/Arturia Software Center.app'
+
 dock_item() { 
  
     printf '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>%s</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>', "$1" 
@@ -42,11 +44,20 @@ Slack=$(dock_item /Applications/Slack.app)
 zoom_us=$(dock_item /Applications/zoom.us.app)
 iTerm=$(dock_item /Applications/iTerm.app)
 Visual_Studio_Code=$(dock_item /Applications/Visual\ Studio\ Code.app)
+BespokeSynth=$(dock_item /Applications/BespokeSynth.app)
+Arturia_Software_Center=$(dock_item /Applications/Arturia/Arturia\ Software\ Center.app)
+Ableton_Live_11_Suite=$(dock_item /Applications/Ableton\ Live\ 11\ Suite.app)
+Logic_Pro=$(dock_item /Applications/Logic\ Pro\ X.app)
 
-# check to see if the apps script has been run by checking for iTerm; if it's there, configure
-# the dock for third party apps, else bring up a bare-bones set of macOS native apps
+# making an enormous number of assumptions here. check to see if music apps have been set up by 
+# looking for the arturia software app. there's typically no way that's been installed without also
+# installing ableton and/or logic. failing that, look to see if the apps script has been run by 
+# checking for iTerm; if it's there, configure the dock for third party apps, else bring up a 
+# bare-bones set of macOS native apps
 
-if [[ -d "$directory_test_app" ]]; then
+if [[ -d "$music_test_app" ]]; then
+        sudo su $LOGGED_USER -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$BespokeSynth' '$Arturia_Software_Center' '$Ableton_Live_11_Suite' '$Logic_Pro' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
+    elif [[ -d "$directory_test_app" ]]; then
         sudo su $LOGGED_USER -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
     else
         echo "Consider running the apps script to install third party apps!"
