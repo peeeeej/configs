@@ -16,6 +16,45 @@ defaults -currentHost write com.apple.dock autohide -bool true
 # don't show recent applications in dock
 defaults -currentHost write com.apple.dock show-recents -bool false
 
+LOGGED_USER=$(whoami) 
+sudo su $LOGGED_USER -c 'defaults delete com.apple.dock persistent-apps' 
+
+directory_test_app='/Applications/zoom.us.app'
+
+dock_item() { 
+ 
+    printf '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>%s</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>', "$1" 
+ 
+} 
+
+# Apps List
+Safari=$(dock_item /System/Cryptexes/App/System/Applications/Safari.app) 
+Messages=$(dock_item /System/Applications/Messages.app) 
+Music=$(dock_item /System/Applications/Music.app)
+Photos=$(dock_item /System/Applications/Photos.app)
+Reminders=$(dock_item /System/Applications/Reminders.app)
+Notes=$(dock_item /System/Applications/Notes.app)
+App_Store=$(dock_item /System/Applications/App\ Store.app)
+System_Settings=$(dock_item /System/Applications/System\ Settings.app)
+Terminal=$(dock_item /System/Applications/Utilities/Terminal.app)
+Google_Chrome=$(dock_item /Applications/Google\ Chrome.app)
+Slack=$(dock_item /Applications/Slack.app)
+zoom_us=$(dock_item /Applications/zoom.us.app)
+iTerm=$(dock_item /Applications/iTerm.app)
+Visual_Studio_Code=$(dock_item /Applications/Visual\ Studio\ Code.app)
+
+# check to see if the apps script has been run by checking for iTerm; if it's there, configure
+# the dock for third party apps, else bring up a bare-bones set of macOS native apps
+
+if [[ -d "$directory_test_app" ]]; then
+        sudo su $LOGGED_USER -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
+    else
+        echo "Consider running the apps script to install third party apps!"
+        sudo su $LOGGED_USER -c "defaults write com.apple.dock persistent-apps -array '$Safari' '$Messages' '$Music' '$Photos' '$Reminders' '$Notes' '$Terminal' '$App_Store' '$System_Settings'"
+fi
+
+killall Dock
+
 ##############
 ### FINDER ###
 ##############
