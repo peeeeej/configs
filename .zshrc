@@ -16,8 +16,8 @@ setopt PROMPT_SUBST
 
 # dedicated history file
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 setopt EXTENDED_HISTORY # extra history info
 setopt INC_APPEND_HISTORY # adds commands to the HISTFILE as they're typed
 setopt appendhistory # history accessible between sessions
