@@ -83,6 +83,7 @@ gitLog () {
     git log --oneline --decorate -$1
 }
 
+# just type desktopCleanup
 desktopCleanup () {
     today=$(date "+%Y-%m-%d")
     me=$(whoami)
