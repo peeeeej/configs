@@ -20,7 +20,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'n'}history -a; history
 alias music="open -a Music"
 
 # update home brew
-alias brewUpdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup && brew doctor"
+alias brewUpdate="brew update ; brew upgrade ; brew upgrade --cask ; brew cleanup ; brew doctor"
 
 # Show/Hide Invisible files
 alias showInvisibles="defaults write com.apple.finder AppleShowAllFiles YES ; killall Finder"
@@ -89,7 +89,7 @@ desktopCleanup () {
     me=$(whoami)
     backup_dir="/Users/$me/Documents/desktop_backup_$today"
 
-    mkdir -p $backup_dir && mv ~/Desktop/* $backup_dir
+    mkdir -p $backup_dir ; mv ~/Desktop/* $backup_dir
 }
 
 # ENV VARIABLES THO
