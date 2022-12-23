@@ -92,6 +92,11 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool t
 # enfore natural scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
+# deactivate force click and haptic feedback
+defaults write "Apple Global Domain" com.apple.trackpad.forceClick -bool False
+defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool False
+defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool True
+
 ###############
 ### MENUBAR ###
 ###############
