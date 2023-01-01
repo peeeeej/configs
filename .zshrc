@@ -100,7 +100,7 @@ function desktopCleanup {
 
 # get some helpful info about the system
 function report {
-    active_shell=$(echo $SHELL | sed 's/\-//g')
+    active_shell=$(echo $SHELL)
     echo "Shell: $active_shell"
     sw_vers
 }
