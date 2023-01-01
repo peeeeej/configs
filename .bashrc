@@ -92,5 +92,12 @@ desktopCleanup () {
     mkdir -p $backup_dir ; mv ~/Desktop/* $backup_dir
 }
 
+# get some helpful info about the system
+report () {
+    active_shell=$(echo $SHELL | sed 's/\-//g')
+    echo "Shell: $active_shell"
+    sw_vers
+}
+
 # ENV VARIABLES THO
 export GREP_OPTIONS='--color=auto'
