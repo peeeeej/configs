@@ -66,6 +66,26 @@ fi
 
 killall Dock
 
+####################
+### /ETC CHANGES ###
+####################
+
+# add homebrew GNU bash to /etc/shells
+if [[ -f /opt/homebrew/bin/bash ]]; then
+    sudo sed -i '' '1s/^/\/opt\/homebrew/\bin\/bash/' /etc/shells
+    echo "added GNU bash to /etc/shells"
+else
+    echo "GNU bash not installed"
+fi
+
+# add homebrew paths to /etc/paths
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    sudo sed -i '' '1s/^/\/opt\/homebrew\/bin\n\/opt\/homebrew\/sbin/' /etc/paths
+    echo "added homebrew paths"
+else
+    echo "homebrew not installed"
+fi
+
 ##############
 ### FINDER ###
 ##############
