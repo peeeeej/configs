@@ -66,6 +66,43 @@ fi
 
 killall Dock
 
+####################
+### /ETC CHANGES ###
+####################
+
+# add homebrew paths to /etc/paths
+# check for homebrew
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    # visual confirmation
+    echo "homebrew detected"
+    # add /opt/homebrew/bin to the first line of /etc/paths
+    sudo sed -i '' -E '1s/^/\/opt\/homebrew\/bin\n/' /etc/paths
+    # add /opt/homebrew/sbin to the last line of /etc/paths, line break is a POSIX convention
+    sudo sed -i '' -E '$a\
+    \'$'\n/opt/homebrew/sbin' /etc/paths
+    # remove trailing blank space that i can't explain
+    sudo sed -i '' -E 's/[ '$'\t'']+$//' /etc/paths
+    # remove a new blank line that i also can't explain
+    sudo sed -i '' -E '/^$/d' /etc/paths
+    # we're done
+    echo "added homebrew paths"
+else
+    # didn't find homebrew, install it at https://brew.sh
+    echo "homebrew not installed, visit https://brew.sh"
+fi
+
+# add GNU bash to /etc/shells
+if [[ -f /opt/homebrew/bin/bash ]]; then
+    echo "GNU bash detected"
+    sudo sed -i '' '$a\
+    \'$'\n\/opt/homebrew/bin/bash' /etc/shells
+    sudo sed -i '' -E 's/[ '$'\t'']+$//' /etc/shells
+    sudo sed -i '' -E '/^$/d' /etc/shells
+    echo "added GNU bash to /etc/shells"
+else
+    echo "GNU bash not installed, make sure to <brew install bash>"
+fi
+
 ##############
 ### FINDER ###
 ##############
@@ -132,6 +169,9 @@ sudo pmset -a hibernatemode 0
 ###############
 ### THE END ###
 ###############
+
+# wait a sec so the user can determine if they need to install anything
+sleep 20
 
 # kill affected applications and log out
 osascript -e 'tell application "loginwindow" to  «event aevtrlgo»'
