@@ -94,7 +94,7 @@ fi
 # add GNU bash to /etc/shells
 if [[ -f /opt/homebrew/bin/bash ]]; then
     echo "GNU bash detected"
-    sudo sed -i '' '$a\
+    sudo sed -i '' -E '$a\
     \'$'\n\/opt/homebrew/bin/bash' /etc/shells
     sudo sed -i '' -E 's/[ '$'\t'']+$//' /etc/shells
     sudo sed -i '' -E '/^$/d' /etc/shells
