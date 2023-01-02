@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-# ZSH STUFF
+### ZSH STUFF ###
+
 # Load version control information
 autoload -Uz vcs_info
 precmd() { vcs_info }
@@ -28,7 +29,7 @@ setopt appendhistory # history accessible between sessions
 # prompt shows hostname, user name, directory, git branch if a git repo
 PS1='%F{yellow}%m%f %F{green}%n%f %~${vcs_info_msg_0_} (╯’□’)╯︵ ' # hostname is yellow, user name is green
 
-# macOS STUFF
+### macOS STUFF ###
 
 # open music duh
 alias music="open -a Music"
@@ -43,12 +44,12 @@ alias hideInvisibles="defaults write com.apple.finder AppleShowAllFiles NO && ki
 # softwareupdate
 alias softwareUpdate="sudo softwareupdate -ir --restart"
 
-# ALIASES THO
+### ALIASES THO ###
 
 # check the weather
 alias weather="curl wttr.in/80033"
 
-# FUNCTIONS THO
+### FUNCTIONS THO ###
 
 # get the length of a string
 function lenstr {
@@ -105,5 +106,7 @@ function report {
     sw_vers
 }
 
-# ENV VARIABLES THO
+### ENV VARIABLES THO ###
+
+# highlight grep search terms in results
 export GREP_OPTIONS='--color=auto'

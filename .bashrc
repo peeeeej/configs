@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# BASH STUFF
+### BASH STUFF ###
 
 # prompt layout and colors; host name, user name, directory, git branch if a git branch
 export PS1="\[\e[33m\]\h \[\e[32m\]\u \[\e[37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] (╯’□’)╯︵ "
@@ -14,7 +14,7 @@ shopt -s histappend
 # after each command, apped to the history and reread it
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'n'}history -a; history -c; history -r"
 
-# macOS STUFF
+### macOS STUFF ###
 
 # open music duh
 alias music="open -a Music"
@@ -32,12 +32,12 @@ alias softwareUpdate="sudo softwareupdate -ir --restart"
 # remove catalina bash warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# ALIASES THO
+### ALIASES THO ###
 
 # check the weather
 alias weather="curl wttr.in/80033"
 
-# FUNCTIONS THO
+### FUNCTIONS THO ###
 
 # get the length of a string
 lenstr () {
@@ -99,5 +99,7 @@ report () {
     sw_vers
 }
 
-# ENV VARIABLES THO
+### ENV VARIABLES THO ###
+
+# highlight grep search terms in results
 export GREP_OPTIONS='--color=auto'
