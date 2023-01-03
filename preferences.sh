@@ -98,6 +98,8 @@ if [[ -f /opt/homebrew/bin/bash ]]; then
     \'$'\n\/opt/homebrew/bin/bash' /etc/shells
     sudo sed -i '' -E 's/[ '$'\t'']+$//' /etc/shells
     sudo sed -i '' -E '/^$/d' /etc/shells
+    sudo sed -i '' -E '/\# one of these shells\.$/a\
+    \'$'\n' /etc/shells
     echo "added GNU bash to /etc/shells"
 else
     echo "GNU bash not installed, make sure to <brew install bash>"
