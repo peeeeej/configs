@@ -21,7 +21,7 @@ sudo su $LOGGED_USER -c 'defaults delete com.apple.dock persistent-apps'
 
 directory_test_app='/Applications/iTerm.app'
 
-music_test_app='/Applications/Arturia/Arturia\ Software\ Center.app'
+music_test_app='/Applications/Arturia/Arturia Software Center.app'
 
 dock_item() { 
  
