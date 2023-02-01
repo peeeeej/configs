@@ -17,7 +17,7 @@ defaults -currentHost write com.apple.dock autohide -bool true
 defaults -currentHost write com.apple.dock show-recents -bool false
 
 LOGGED_USER=$(whoami) 
-sudo su $LOGGED_USER -c 'defaults delete com.apple.dock persistent-apps' 
+sudo su "$LOGGED_USER" -c 'defaults delete com.apple.dock persistent-apps' 
 
 directory_test_app='/Applications/iTerm.app'
 
@@ -56,12 +56,12 @@ Logic_Pro=$(dock_item /Applications/Logic\ Pro\ X.app)
 # bare-bones set of macOS native apps
 
 if [[ -d "$music_test_app" ]]; then
-        sudo su $LOGGED_USER -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$BespokeSynth' '$Arturia_Software_Center' '$Ableton_Live_11_Suite' '$Logic_Pro' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$BespokeSynth' '$Arturia_Software_Center' '$Ableton_Live_11_Suite' '$Logic_Pro' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
     elif [[ -d "$directory_test_app" ]]; then
-        sudo su $LOGGED_USER -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
     else
         echo "Consider running the apps script to install third party apps!"
-        sudo su $LOGGED_USER -c "defaults write com.apple.dock persistent-apps -array '$Safari' '$Messages' '$Music' '$Photos' '$Reminders' '$Notes' '$Terminal' '$App_Store' '$System_Settings'"
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Safari' '$Messages' '$Music' '$Photos' '$Reminders' '$Notes' '$Terminal' '$App_Store' '$System_Settings'"
 fi
 
 killall Dock
