@@ -1,5 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+# do you even need to run this?
+
+if [[ $(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 2>/dev/null) ]]; then
+    echo "Are you sure you need to run this?"
+    exit
+fi
 # ask for the administrator password upfront
 sudo -v
 
@@ -7,7 +13,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # make this mess in the downloads directory
-cd ~/Downloads/
+cd ~/Downloads/ || exit
 
 ############
 ### CURL ###
@@ -50,8 +56,8 @@ declare -a zips=('VSCode-darwin-universal.zip' 'iTerm2.zip')
 declare -a zip_apps=('Visual Studio Code.app' 'iTerm.app')
 
 # unzip .zip files
-for val in ${zips[@]}; do
-    unzip $val
+for val in "${zips[@]}"; do
+    unzip "$val"
 done
 
 # move apps to applications folder
@@ -73,8 +79,8 @@ declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.65.dmg')
 declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.65')
 
 # mount .dmg files
-for val in ${dmgs[@]}; do
-    hdiutil attach $val
+for val in "${dmgs[@]}"; do
+    hdiutil attach "$val"
 done
 
 # copy apps to applications folder
@@ -88,8 +94,8 @@ for val in "${volumes[@]}"; do
 done
 
 # remove .dmg files
-for val in ${dmgs[@]}; do
-    rm $val
+for val in "${dmgs[@]}"; do
+    rm "$val"
 done
 
 ##################
