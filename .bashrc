@@ -77,6 +77,7 @@ gitPull () {
     ls $1 | xargs -I{} echo $1/{} | sed 's/\/\//\//' | xargs -I{} git -C {} pull
 }
 
+# same as gitPull above but status instead of pull
 gitStatus () {
     ls $1 | xargs -I{} echo $1/{} | sed 's/\/\//\//' | xargs -I{} git -C {} status
 }
