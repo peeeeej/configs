@@ -77,6 +77,10 @@ gitPull () {
     ls $1 | xargs -I{} echo $1/{} | sed 's/\/\//\//' | xargs -I{} git -C {} pull
 }
 
+gitStatus () {
+    ls $1 | xargs -I{} echo $1/{} | sed 's/\/\//\//' | xargs -I{} git -C {} status
+}
+
 # show the oneline/decorated version of a git log. make sure to 
 # include a number so that it knows how many lines to display.
 gitLog () {
