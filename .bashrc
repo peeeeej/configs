@@ -5,8 +5,11 @@
 # prompt layout and colors; host name, user name, directory, git branch if a git branch
 export PS1="\[\e[33m\]\h \[\e[32m\]\u \[\e[37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] (╯’□’)╯︵ "
 
-# history file size
-HISTSIZE=50000
+# history length (infinite!)
+HISTSIZE=-1
+
+# file size has no limit
+HISTFILESIZE=-1
 
 # append to the history file when the shell exits instead of overwriting
 shopt -s histappend
