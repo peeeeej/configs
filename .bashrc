@@ -11,6 +11,9 @@ HISTSIZE=-1
 # file size has no limit
 HISTFILESIZE=-1
 
+# ignore commands
+HISTIGNORE="history*"
+
 # append to the history file when the shell exits instead of overwriting
 shopt -s histappend
 

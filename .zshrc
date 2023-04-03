@@ -22,6 +22,10 @@ HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 
+# ignore commands
+HISTORY_IGNORE="history*"
+
+# some other odds and ends
 setopt EXTENDED_HISTORY # extra history info
 setopt INC_APPEND_HISTORY # adds commands to the HISTFILE as they're typed
 setopt appendhistory # history accessible between sessions
