@@ -48,6 +48,7 @@ BespokeSynth=$(dock_item /Applications/BespokeSynth.app)
 Arturia_Software_Center=$(dock_item /Applications/Arturia/Arturia\ Software\ Center.app)
 Ableton_Live_11_Suite=$(dock_item /Applications/Ableton\ Live\ 11\ Suite.app)
 Logic_Pro=$(dock_item /Applications/Logic\ Pro\ X.app)
+Voice_Memos=$(dock_item /System/Applications/Voice\ Memos.app)
 
 # making an enormous number of assumptions here. check to see if music apps have been set up by 
 # looking for the arturia software app. there's typically no way that's been installed without also
@@ -56,12 +57,12 @@ Logic_Pro=$(dock_item /Applications/Logic\ Pro\ X.app)
 # bare-bones set of macOS native apps
 
 if [[ -d "$music_test_app" ]]; then
-        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$BespokeSynth' '$Arturia_Software_Center' '$Ableton_Live_11_Suite' '$Logic_Pro' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$BespokeSynth' '$Arturia_Software_Center' '$Ableton_Live_11_Suite' '$Logic_Pro' '$Voice_Memos' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
     elif [[ -d "$directory_test_app" ]]; then
-        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$Voice_Memos' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
     else
         echo "Consider running the apps script to install third party apps!"
-        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Safari' '$Messages' '$Music' '$Photos' '$Reminders' '$Notes' '$Terminal' '$App_Store' '$System_Settings'"
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Safari' '$Messages' '$Music' '$Voice_Memos' '$Photos' '$Reminders' '$Notes' '$Terminal' '$App_Store' '$System_Settings'"
 fi
 
 killall Dock
