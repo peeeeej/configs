@@ -35,9 +35,6 @@ alias hideInvisibles="defaults write com.apple.finder AppleShowAllFiles NO ; kil
 # softwareupdate
 alias softwareUpdate="sudo softwareupdate -ir --restart"
 
-# remove catalina bash warning
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
 ### ALIASES THO ###
 
 # check the weather
@@ -114,3 +111,6 @@ report () {
 
 # highlight grep search terms in results
 export GREP_OPTIONS='--color=auto'
+
+# remove catalina bash warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
