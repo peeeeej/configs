@@ -100,6 +100,15 @@ desktopCleanup () {
     mkdir -p $backup_dir ; mv ~/Desktop/* $backup_dir
 }
 
+# just type workspaceCleanup
+workspaceCleanup () {
+    today=$(date "+%Y-%m-%d")
+    me=$(whoami)
+    backup_dir="/Users/$me/Documents/workspace_backup_$today"
+
+    mkdir -p $backup_dir && mv ~/workspace/* $backup_dir
+}
+
 # get some helpful info about the system
 report () {
     active_shell=$(echo $SHELL)
