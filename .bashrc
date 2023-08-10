@@ -35,6 +35,7 @@ alias softwareUpdate="sudo softwareupdate -ir --restart"
 
 # check the weather
 alias weather="curl wttr.in/80033"
+alias za="python3 ~/git/pizza-calculator/pizza.py"
 
 ### FUNCTIONS THO ###
 
