@@ -8,7 +8,8 @@ declare -a extensions=(
     'ms-python.vscode-pylance' \
     'ms-python.python' \
     'mechatroner.rainbow-csv' \
-    'bmalehorn.shell-syntax'
+    'bmalehorn.shell-syntax' \
+    'eamodio.gitlens'
     )
 
 for val in "${extensions[@]}"; do
