@@ -26,6 +26,8 @@ if [[ $(arch) != 'arm64' ]]; then
         curl -L https://slack.com/ssb/download-osx --output Slack.dmg
         # zoom intel
         curl -O -L https://zoom.us/client/latest/ZoomInstaller.pkg
+        # visual studio code universal
+        curl -J -L  https://go.microsoft.com/fwlink/?linkid=2156837 --output VSCode.zip
     else
         # google chrome apple silicon
         curl -O -J -L https://dl.google.com/chrome/mac/universal/stable/CHFA/googlechrome.dmg
@@ -33,10 +35,9 @@ if [[ $(arch) != 'arm64' ]]; then
         curl -L https://slack.com/ssb/download-osx-silicon --output Slack.dmg
         # zoom apple silicon
         curl -L https://zoom.us/client/latest/Zoom.pkg?archType=arm64 --output ZoomInstaller.pkg
+        # visual studio code apple silicon
+        curl -J -L https://update.code.visualstudio.com/latest/darwin-arm64/stable --output VSCode.zip
     fi
-
-# visual studio code universal
-curl -O -J -L  https://go.microsoft.com/fwlink/?linkid=2156837
 
 # iterm2
 curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
@@ -44,14 +45,11 @@ curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
 # rectangle
 curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.81/Rectangle0.81.dmg
 
-# 1password
-curl -L  https://app-updates.agilebits.com/download/OPM7 --output 1Password.pkg
-
 ##################
 ### .ZIP FILES ###
 ##################
 
-declare -a zips=('VSCode-darwin-universal.zip' 'iTerm2.zip')
+declare -a zips=('VSCode.zip' 'iTerm2.zip')
 
 declare -a zip_apps=('Visual Studio Code.app' 'iTerm.app')
 
@@ -102,7 +100,7 @@ done
 ### .PKG FILES ###
 ##################
 
-declare -a pkgs=('1Password.pkg' 'ZoomInstaller.pkg')
+declare -a pkgs=('ZoomInstaller.pkg')
 
 # install pkgs
 for val in "${pkgs[@]}"; do
@@ -110,4 +108,6 @@ for val in "${pkgs[@]}"; do
 done
 
 # remove zoom and 1Password
-rm ZoomInstaller.pkg 1Password.pkg
+for val in "${pkgs[@]}"; do
+    rm "$val"
+done
