@@ -67,7 +67,10 @@ mkpass () {
 
 # get the ip address the internet thinks you have
 myip () {
-    curl http://ipecho.net/plain ; echo
+    ipv4=$(curl -s ipv4.icanhazip.com)
+    ipv6=$(curl -s ipv6.icanhazip.com)
+    echo "IPv4: $ipv4"
+    echo "IPv6: $ipv6"
 }
 
 # list the subdirectories of a directory and then git pull on those paths, you must provide
