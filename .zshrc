@@ -125,6 +125,11 @@ function report {
     sw_vers
 }
 
+function randomPup {
+    pup_response=$(curl -X GET https://dog.ceo/api/breeds/image/random)
+    pup_link=$(echo $pup_response | jq '.message' | tr -d '"')
+    open -u $pup_link
+}
 ### ENV VARIABLES THO ###
 
 # highlight grep search terms in results
