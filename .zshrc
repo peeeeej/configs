@@ -31,7 +31,7 @@ setopt INC_APPEND_HISTORY # adds commands to the HISTFILE as they're typed
 setopt appendhistory # history accessible between sessions
 
 # prompt shows hostname, user name, directory, git branch if a git repo
-PS1='%F{yellow}%m%f %F{green}%n%f %~${vcs_info_msg_0_} 🍔 ' # hostname is yellow, user name is green
+PS1='%F{yellow}%m%f %F{green}%n%f %~${vcs_info_msg_0_} 🎃 ' # hostname is yellow, user name is green
 
 ### macOS STUFF ###
 
@@ -126,8 +126,8 @@ function report {
 }
 
 function randomPup {
-    pup_response=$(curl -X GET https://dog.ceo/api/breeds/image/random)
-    pup_link=$(echo $pup_response | jq '.message' | tr -d '"')
+    pup_response=$(curl -s -X GET https://dog.ceo/api/breeds/image/random)
+    pup_link=$(echo $pup_response | jq -r '.message')
     open -u $pup_link
 }
 ### ENV VARIABLES THO ###

@@ -3,7 +3,7 @@
 ### BASH STUFF ###
 
 # prompt layout and colors; host name, user name, directory, git branch if a git branch
-export PS1="\[\e[33m\]\h \[\e[32m\]\u \[\e[37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] (╯’□’)╯︵ "
+export PS1="\[\e[33m\]\h \[\e[32m\]\u \[\e[37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] 🎃 "
 
 # history length (infinite!)
 HISTSIZE=-1
@@ -117,8 +117,8 @@ report () {
 }
 
 randomPup () {
-    pup_response=$(curl -X GET https://dog.ceo/api/breeds/image/random)
-    pup_link=$(echo $pup_response | jq '.message' | tr -d '"')
+    pup_response=$(curl -s -X GET https://dog.ceo/api/breeds/image/random)
+    pup_link=$(echo $pup_response | jq -r '.message')
     open -u $pup_link
 }
 ### ENV VARIABLES THO ###
