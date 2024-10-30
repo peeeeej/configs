@@ -55,7 +55,6 @@ dock_item() {
 
 # Apps List
 apps_list=(
-    "/System/Applications/Safari.app"
     "/System/Applications/Messages.app"
     "/System/Applications/Music.app"
     "/System/Applications/Photos.app"
@@ -63,17 +62,17 @@ apps_list=(
     "/System/Applications/Notes.app"
     "/System/Applications/App Store.app"
     "/System/Applications/System Settings.app"
+    "/System/Applications/VoiceMemos.app"
     "/System/Applications/Utilities/Terminal.app"
+    "Applications/Safari.app"
     "/Applications/Google Chrome.app"
     "/Applications/Slack.app"
     "/Applications/zoom.us.app"
     "/Applications/iTerm.app"
     "/Applications/Visual Studio Code.app"
-    "/Applications/BespokeSynth.app"
     "/Applications/Arturia/Arturia Software Center.app"
     "/Applications/Ableton Live 11 Suite.app"
     "/Applications/Logic Pro X.app"
-    "/System/Applications/Voice Memos.app"
 )
 
 # Create dock items
