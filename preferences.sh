@@ -41,71 +41,55 @@ if ! defaults -currentHost write com.apple.dock show-recents -bool false; then
 fi
 
 LOGGED_USER=$(whoami)
-if ! sudo defaults delete com.apple.dock persistent-apps; then
-    log_message "Failed to delete persistent apps from dock."
-fi
+sudo su "$LOGGED_USER" -c 'defaults delete com.apple.dock persistent-apps' 
 
-# Define test application paths
 directory_test_app='/Applications/iTerm.app'
+
 music_test_app='/Applications/Arturia/Arturia Software Center.app'
 
-dock_item() {
-    printf '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>%s</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' "$1"
-}
+dock_item() { 
+ 
+    printf '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>%s</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>', "$1" 
+ 
+} 
 
 # Apps List
-apps_list=(
-    "/System/Applications/Messages.app"
-    "/System/Applications/Music.app"
-    "/System/Applications/Photos.app"
-    "/System/Applications/Reminders.app"
-    "/System/Applications/Notes.app"
-    "/System/Applications/App Store.app"
-    "/System/Applications/System Settings.app"
-    "/System/Applications/VoiceMemos.app"
-    "/System/Applications/Utilities/Terminal.app"
-    "Applications/Safari.app"
-    "/Applications/Google Chrome.app"
-    "/Applications/Slack.app"
-    "/Applications/zoom.us.app"
-    "/Applications/iTerm.app"
-    "/Applications/Visual Studio Code.app"
-    "/Applications/Arturia/Arturia Software Center.app"
-    "/Applications/Ableton Live 11 Suite.app"
-    "/Applications/Logic Pro X.app"
-)
+Safari=$(dock_item /System/Cryptexes/App/System/Applications/Safari.app) 
+Messages=$(dock_item /System/Applications/Messages.app) 
+Music=$(dock_item /System/Applications/Music.app)
+Photos=$(dock_item /System/Applications/Photos.app)
+Reminders=$(dock_item /System/Applications/Reminders.app)
+Notes=$(dock_item /System/Applications/Notes.app)
+App_Store=$(dock_item /System/Applications/App\ Store.app)
+System_Settings=$(dock_item /System/Applications/System\ Settings.app)
+Terminal=$(dock_item /System/Applications/Utilities/Terminal.app)
+Google_Chrome=$(dock_item /Applications/Google\ Chrome.app)
+Slack=$(dock_item /Applications/Slack.app)
+zoom_us=$(dock_item /Applications/zoom.us.app)
+iTerm=$(dock_item /Applications/iTerm.app)
+Visual_Studio_Code=$(dock_item /Applications/Visual\ Studio\ Code.app)
+BespokeSynth=$(dock_item /Applications/BespokeSynth.app)
+Arturia_Software_Center=$(dock_item /Applications/Arturia/Arturia\ Software\ Center.app)
+Ableton_Live_11_Suite=$(dock_item /Applications/Ableton\ Live\ 11\ Suite.app)
+Logic_Pro=$(dock_item /Applications/Logic\ Pro\ X.app)
+Voice_Memos=$(dock_item /System/Applications/Voice\ Memos.app)
 
-# Create dock items
-dock_items=()
-for app in "${apps_list[@]}"; do
-    if [[ -d "$app" ]]; then
-        dock_items+=("$(dock_item "$app")")
-    else
-        log_message "Application not found: $app"
-    fi
-done
+# making an enormous number of assumptions here. check to see if music apps have been set up by 
+# looking for the arturia software app. there's typically no way that's been installed without also
+# installing ableton and/or logic. failing that, look to see if the apps script has been run by 
+# checking for iTerm; if it's there, configure the dock for third party apps, else bring up a 
+# bare-bones set of macOS native apps
 
-# Configure the dock based on installed applications
 if [[ -d "$music_test_app" ]]; then
-    if ! sudo defaults write com.apple.dock persistent-apps -array "${dock_items[@]}"; then
-        log_message "Failed to write persistent apps with music apps."
-    fi
-elif [[ -d "$directory_test_app" ]]; then
-    # Exclude music and Arturia apps if iTerm is found
-    if ! sudo defaults write com.apple.dock persistent-apps -array "$(dock_item '/Applications/Google Chrome.app')" "$(dock_item '/System/Applications/Messages.app')" "$(dock_item '/Applications/Slack.app')" "$(dock_item '/Applications/zoom.us.app')" "$(dock_item '/System/Applications/Voice Memos.app')" "$(dock_item '/Applications/iTerm.app')" "$(dock_item '/Applications/Visual Studio Code.app')" "$(dock_item '/System/Applications/Photos.app')" "$(dock_item '/System/Applications/Reminders.app')" "$(dock_item '/System/Applications/Notes.app')" "$(dock_item '/System/Applications/App Store.app')" "$(dock_item '/System/Applications/System Settings.app')"; then
-        log_message "Failed to write persistent apps with iTerm found."
-    fi
-else
-    log_message "Consider running the apps script to install third party apps!"
-    if ! sudo defaults write com.apple.dock persistent-apps -array "$(dock_item '/System/Applications/Safari.app')" "$(dock_item '/System/Applications/Messages.app')" "$(dock_item '/System/Applications/Music.app')" "$(dock_item '/System/Applications/Voice Memos.app')" "$(dock_item '/System/Applications/Photos.app')" "$(dock_item '/System/Applications/Reminders.app')" "$(dock_item '/System/Applications/Notes.app')" "$(dock_item '/System/Applications/Utilities/Terminal.app')" "$(dock_item '/System/Applications/App Store.app')" "$(dock_item '/System/Applications/System Settings.app')"; then
-        log_message "Failed to write default persistent apps."
-    fi
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$BespokeSynth' '$Arturia_Software_Center' '$Ableton_Live_11_Suite' '$Logic_Pro' '$Voice_Memos' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
+    elif [[ -d "$directory_test_app" ]]; then
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Google_Chrome' '$Messages' '$Slack' '$zoom_us' '$Music' '$Voice_Memos' '$iTerm' '$Visual_Studio_Code' '$Photos' '$Reminders' '$Notes' '$App_Store' '$System_Settings'"
+    else
+        echo "Consider running the apps script to install third party apps!"
+        sudo su "$LOGGED_USER" -c "defaults write com.apple.dock persistent-apps -array '$Safari' '$Messages' '$Music' '$Voice_Memos' '$Photos' '$Reminders' '$Notes' '$Terminal' '$App_Store' '$System_Settings'"
 fi
 
-# Kill the Dock to apply changes
-if ! killall Dock; then
-    log_message "Failed to restart Dock."
-fi
+killall Dock
 
 ####################
 ### /ETC CHANGES ###
@@ -225,6 +209,11 @@ fi
 # Set clock date/time format
 if ! defaults write com.apple.menuextra.clock DateFormat "EEE MMM d  h:mm:ss a"; then
     log_message "Failed to set clock date/time format."
+fi
+
+# Show seconds
+if ! defaults write com.apple.menuextra.clock ShowSeconds -bool true; then
+    log_message "Failed to show the seconds in the menu bar clock."
 fi
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
