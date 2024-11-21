@@ -128,3 +128,6 @@ export GREP_OPTIONS='--color=auto'
 
 # remove catalina bash warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# for discogs client stuff
+export DISCOGS_TOKEN="$(security find-generic-password  -gs DISCOGS_TOKEN -w)"

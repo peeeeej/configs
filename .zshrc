@@ -134,3 +134,6 @@ function randomPup {
 
 # highlight grep search terms in results
 export GREP_OPTIONS='--color=auto'
+
+# for discogs client stuff
+export DISCOGS_TOKEN="$(security find-generic-password  -gs DISCOGS_TOKEN -w)"
