@@ -54,18 +54,18 @@ declare -a zips=('VSCode.zip' 'iTerm2.zip')
 declare -a zip_apps=('Visual Studio Code.app' 'iTerm.app')
 
 # unzip .zip files
-for val in "${zips[@]}"; do
-    unzip "$val"
+for zip in "${zips[@]}"; do
+    unzip "$zip"
 done
 
 # move apps to applications folder
-for val in "${zip_apps[@]}"; do
-    mv "$val" /Applications
+for app in "${zip_apps[@]}"; do
+    mv "$app" /Applications
 done
 
 # remove zip files from ~/Downloads
-for val in "${zips[@]}"; do
-    rm "$val"
+for zip in "${zips[@]}"; do
+    rm "$zip"
 done
 
 ##################
@@ -77,8 +77,8 @@ declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.85.dmg')
 declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.85')
 
 # mount .dmg files
-for val in "${dmgs[@]}"; do
-    hdiutil attach "$val"
+for dmg in "${dmgs[@]}"; do
+    hdiutil attach "$dmg"
 done
 
 # copy apps to applications folder
@@ -87,13 +87,13 @@ cp -R /Volumes/Slack/Slack.app /Applications
 cp -R /Volumes/Rectangle0.85/Rectangle.app /Applications
 
 # eject .dmg files
-for val in "${volumes[@]}"; do
-    hdiutil detach /Volumes/"$val"
+for volume in "${volumes[@]}"; do
+    hdiutil detach /Volumes/"$volume"
 done
 
 # remove .dmg files
-for val in "${dmgs[@]}"; do
-    rm "$val"
+for dmg in "${dmgs[@]}"; do
+    rm "$dmg"
 done
 
 ##################
@@ -103,11 +103,11 @@ done
 declare -a pkgs=('ZoomInstaller.pkg')
 
 # install pkgs
-for val in "${pkgs[@]}"; do
-    sudo installer -pkg "$val" -target /
+for pkg in "${pkgs[@]}"; do
+    sudo installer -pkg "$pkg" -target /
 done
 
 # remove zoom and 1Password
-for val in "${pkgs[@]}"; do
-    rm "$val"
+for pkg in "${pkgs[@]}"; do
+    rm "$pkg"
 done
