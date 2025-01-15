@@ -43,7 +43,7 @@ if [[ $(arch) != 'arm64' ]]; then
 curl -L https://iterm2.com/downloads/stable/latest --output iTerm2.zip
 
 # rectangle
-curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.84/Rectangle0.84.dmg
+curl -O -L https://github.com/rxhanson/Rectangle/releases/download/v0.85/Rectangle0.85.dmg
 
 ##################
 ### .ZIP FILES ###
@@ -72,9 +72,9 @@ done
 ### .DMG FILES ###
 ##################
 
-declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.84.dmg')
+declare -a dmgs=('googlechrome.dmg' 'Slack.dmg' 'Rectangle0.85.dmg')
 
-declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.84')
+declare -a volumes=('Google Chrome' 'Slack' 'Rectangle0.85')
 
 # mount .dmg files
 for val in "${dmgs[@]}"; do
@@ -84,7 +84,7 @@ done
 # copy apps to applications folder
 cp -R /Volumes/Google\ Chrome/Google\ Chrome.app /Applications
 cp -R /Volumes/Slack/Slack.app /Applications
-cp -R /Volumes/Rectangle0.84/Rectangle.app /Applications
+cp -R /Volumes/Rectangle0.85/Rectangle.app /Applications
 
 # eject .dmg files
 for val in "${volumes[@]}"; do
