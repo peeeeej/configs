@@ -3,7 +3,7 @@
 ### BASH STUFF ###
 
 # prompt layout and colors; host name, user name, directory, git branch if a git branch
-export PS1="\[\e[33m\]\h \[\e[32m\]\u \[\e[37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] 🌮 "
+export PS1="\[\e[33m\]\h \[\e[32m\]\u \[\e[37m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
 # history length (infinite!)
 HISTSIZE=-1
