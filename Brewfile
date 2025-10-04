@@ -1,0 +1,10 @@
+brew "bash"
+brew "git"
+brew "jq"
+brew "pyenv"
+
+cask "visual-studio-code"
+cask "iterm2"
+cask "rectangle"
+cask "slack"
+cask "google-chrome"
