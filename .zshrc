@@ -35,9 +35,6 @@ PS1='%F{yellow}%m%f %F{green}%n%f %~${vcs_info_msg_0_} 🌮 ' # hostname is yell
 
 ### macOS STUFF ###
 
-# open music duh
-alias music="open -a Music"
-
 # update home brew
 alias brewUpdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup && brew doctor"
 
@@ -48,8 +45,6 @@ alias softwareUpdate="sudo softwareupdate -ir --restart"
 
 # check the weather
 alias weather="curl wttr.in/80033"
-
-alias za="python3 ~/git/pizza-calculator/pizza.py"
 
 ### FUNCTIONS THO ###
 
